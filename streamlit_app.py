@@ -14,13 +14,30 @@ interactions_collection = db['interactions']
 # Initialize the evaluator
 evaluator = RAGEvaluator()
 
-# Input data
-question = "What are the causes of climate change?"
-response = "Climate change is caused by human activities."
-reference = "Human activities such as burning fossil fuels cause climate change."
+# Fetch all interactions from the collection
+interactions = interactions_collection.find()
 
-# Evaluate the response
-metrics = evaluator.evaluate_all(question, response, reference)
+for interaction in interactions:
+    # Extract fields from each document
+    question = interaction.get('question', '')
+    answer = interaction.get('answer', '')
+    
+    # Concatenate response1, response2, and response3 to create the reference
+    response1 = interaction.get('response1', '')
+    response2 = interaction.get('response2', '')
+    response3 = interaction.get('response3', '')
+    
+    reference = f"{response1} {response2} {response3}".strip()
 
-# Print the results
-st.write(metrics)
+    # Evaluate the response
+    if question and answer and reference:
+        metrics = evaluator.evaluate_all(question, answer, reference)
+        
+        # Display the metrics for each interaction
+        st.write(f"Metrics for question: {question}")
+        st.write(metrics)
+    else:
+        st.write(f"Missing data for interaction: {interaction['_id']}")
+
+# Close the MongoDB connection
+client.close()
