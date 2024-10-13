@@ -35,6 +35,7 @@ for interaction in interactions:
         
         # Display the metrics for each interaction
         st.write(f"Metrics for question: {question}")
+        st.write(f"Answer from chatbot: {answer}")
         st.write(metrics)
     else:
         st.write(f"Missing data for interaction: {interaction['_id']}")
