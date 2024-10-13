@@ -3,6 +3,14 @@ import streamlit as st
 
 from rag_evaluator import RAGEvaluator
 
+from pymongo import MongoClient
+
+
+# MongoDB connection setup
+client = MongoClient('mongodb+srv://igorslima:xWo6JnXYi2WnG7af@msc-ai-bath.rrx20ab.mongodb.net/?retryWrites=true&w=majority&appName=MSc-AI-Bath')
+db = client['user_db']
+interactions_collection = db['interactions']
+
 # Initialize the evaluator
 evaluator = RAGEvaluator()
 
