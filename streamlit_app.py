@@ -6,11 +6,6 @@ from rag_evaluator import RAGEvaluator
 # Initialize the evaluator
 evaluator = RAGEvaluator()
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
-
 # Input data
 question = "What are the causes of climate change?"
 response = "Climate change is caused by human activities."
