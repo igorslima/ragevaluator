@@ -1,4 +1,3 @@
 streamlit
-git+https://github.com/AIAnytime/rag-evaluator.git
+rag-evaluator
 pymongo
-mauve-text
