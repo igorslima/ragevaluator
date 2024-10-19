@@ -1,3 +1,4 @@
 streamlit
 rag-evaluator
 pymongo
+mauve-text
