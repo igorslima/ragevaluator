@@ -32,7 +32,7 @@ if username:
 
         # Evaluate the response if all necessary data is present
         if question and answer and reference:
-            metrics = evaluator.evaluate_mauve(question, answer, reference)
+            metrics = evaluator.evaluate_all(question, answer, reference)
             
             # Display the metrics for each interaction
             st.write(f"Metrics for question: {question}")
